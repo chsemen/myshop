@@ -46,7 +46,7 @@ def payment_process(request):
     else:
         return render(request, 'payment/process.html', locals())
 
-
+#4242 4242 4242 4242
 def payment_completed(request):
     return render(request, 'payment/completed.html')
 
