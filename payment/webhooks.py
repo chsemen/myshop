@@ -5,6 +5,8 @@ from django.views.decorators.csrf import csrf_exempt
 import stripe.error
 from orders.models import Order
 
+# stripe listen --forward-to 127.0.0.1:8000/payment/webhook/
+
 @csrf_exempt
 def stripe_webhook(request):
     payload = request.body
