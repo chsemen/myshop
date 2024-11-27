@@ -12,6 +12,10 @@ def order_detail(obj):
     url = reverse('orders:admin_order_detail', args=[obj.id])
     return mark_safe(f'<a href="{url}">View</a>')
 
+def order_pdf(obj):
+    url = reverse('orders:admin_order_pdf', args=[obj.id])
+    return mark_safe(f'<a href="{url}">PDF</a>')
+order_pdf.short_description = 'Invoice'
 
 class OrderItemInline(admin.TabularInline):
     model = OrderItem
@@ -63,7 +67,8 @@ class OrderAdmin(admin.ModelAdmin):
         order_payment,
         'created',
         'updated',
-        order_detail
+        order_detail,
+        order_pdf,
     ]
     list_filter = ['paid', 'created', 'updated']
     inlines = [OrderItemInline]
